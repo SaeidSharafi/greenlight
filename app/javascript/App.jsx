@@ -60,7 +60,6 @@ export default function App() {
         newestOnTop
         autoClose={3000}
       />
-      <Footer />
     </>
   );
 }

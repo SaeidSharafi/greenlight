@@ -25,13 +25,14 @@ i18next
     backend: {
       loadPath: `${process.env.RELATIVE_URL_ROOT}/api/v1/locales/{{lng}}.json`,
     },
+    lng: 'fa',
     load: 'currentOnly',
     fallbackLng: (locale) => {
       const fallbacks = [];
       if (locale?.indexOf('-') > -1) {
         fallbacks.push(locale.split('-')[0]);
       }
-      fallbacks.push('en');
+      fallbacks.push('fa');
       return fallbacks;
     },
   });
