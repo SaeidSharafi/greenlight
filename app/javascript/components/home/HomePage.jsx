@@ -26,7 +26,7 @@ import {
 import { toast } from 'react-toastify';
 import { useAuth } from '../../contexts/auth/AuthProvider';
 import HomepageFeatureCard from './HomepageFeatureCard';
-import banner from '../../../assets/images/slides/home.png'
+import banner from '../../../assets/images/slides/home.png';
 export default function HomePage() {
   const { t } = useTranslation();
   const currentUser = useAuth();
