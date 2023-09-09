@@ -22,7 +22,10 @@ import { useCallback, useMemo } from 'react';
 
 export function useForgetPwdFormValidation() {
   return useMemo(() => (yup.object({
-    email: yup.string().required('forms.user.forget_password.validations.email.required').email('forms.validations.email.email'),
+    email: yup.string().required('forms.user.forget_password.validations.email.required').matches(
+      /[a-zA-Z0-9@.]+/,
+      'forms.validations.email.email'
+    ),
   })), []);
 }
 

@@ -41,7 +41,7 @@ class User < ApplicationRecord
                    length: { minimum: 2, maximum: 255 } # TODO: amir - Change into full_name or seperate first and last name.
 
   validates :email,
-            format: /\A[\w\-.+]+@[\w\-.]+\.[a-z]+\z/i,
+            format: /[a-zA-Z0-9@.]+/,
             presence: true,
             uniqueness: { case_sensitive: false, scope: :provider },
             length: { minimum: 5, maximum: 255 }
@@ -54,7 +54,7 @@ class User < ApplicationRecord
             length: { maximum: 255 }
 
   validates :password,
-            format: %r{\A(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[`@%~!#£$\\^&*()\]\[+={}/|:;"'<>\-,.?_ ]).{8,}\z},
+            format: %r{\A(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}\z},
             on: %i[create update], if: :password_digest_changed?, unless: :external_id?
 
   validates :avatar,

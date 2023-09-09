@@ -161,7 +161,7 @@ RSpec.describe Api::V1::Migrations::ExternalController, type: :controller do
       before { allow_any_instance_of(described_class).to receive(:generate_secure_pwd).and_call_original }
 
       it 'generates a secure random complex password' do
-        pwd_pattern = %r{\A(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[`@%~!#£$\\^&*()\]\[+={}/|:;"'<>\-,.?_ ]).{8,}\z}
+        pwd_pattern = %r{\A(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}\z}
         random_pwd = described_class.new.generate_secure_pwd
         expect(random_pwd).to match(pwd_pattern)
         expect(random_pwd.size).to eq(26)

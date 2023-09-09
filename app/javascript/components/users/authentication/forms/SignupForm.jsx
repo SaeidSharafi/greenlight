@@ -40,7 +40,7 @@ export default function SignupForm() {
   return (
     <Form methods={methods} onSubmit={handleSubmit}>
       <FormControl field={fields.name} type="text" autoFocus />
-      <FormControl field={fields.email} type="email" />
+      <FormControl field={fields.email} type="text" />
       <FormControl field={fields.password} type="password" />
       <FormControl field={fields.password_confirmation} type="password" />
       <HCaptcha ref={captchaRef} />

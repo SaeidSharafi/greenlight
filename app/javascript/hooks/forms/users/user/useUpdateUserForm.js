@@ -26,7 +26,11 @@ export function useUpdateUserFormValidation() {
       .min(2, 'forms.validations.full_name.min')
       .max(255, 'forms.validations.full_name.max'),
 
-    email: yup.string().required('forms.validations.email.required').email('forms.validations.email.email')
+    email: yup.string().required('forms.validations.email.required')
+      .matches(
+        /[a-zA-Z0-9@.]+/,
+        'forms.validations.email.email'
+      )
       .min(6, 'forms.validations.email.min')
       .max(255, 'forms.validations.email.max'),
     language:

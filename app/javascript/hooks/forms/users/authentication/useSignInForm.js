@@ -22,7 +22,10 @@ import { useCallback, useMemo } from 'react';
 
 export function useSignInFormValidation() {
   return useMemo(() => (yup.object({
-    email: yup.string().required('forms.validations.email.required').email('forms.validations.email.email'),
+    email: yup.string().required('forms.validations.email.required').matches(
+      /[a-zA-Z0-9@.]+/,
+      'forms.validations.email.email'
+    ),
     password: yup.string().required('forms.validations.password.required'),
     extend_session: yup.bool(''),
   })), []);
