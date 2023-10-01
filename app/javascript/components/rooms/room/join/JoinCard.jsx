@@ -222,16 +222,6 @@ export default function JoinCard() {
             <Form methods={methods} onSubmit={handleJoin}>
               <FormControl field={fields.name} type="text" disabled={currentUser?.signed_in} autoFocus={!currentUser?.signed_in} />
               {hasAccessCode && <FormControl field={fields.accessCode} type="text" autoFocus={currentUser?.signed_in} />}
-              {publicRoom?.data?.recording_consent === 'true' && (
-                <FormControlGeneric
-                  id={fields.recordingConsent.controlId}
-                  className="text-muted"
-                  field={fields.recordingConsent}
-                  label={fields.recordingConsent.label}
-                  control={RegularForm.Check}
-                  type="checkbox"
-                />
-              )}
 
               <Button
                 variant="brand"

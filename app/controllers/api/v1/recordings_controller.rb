@@ -112,7 +112,9 @@ module Api
                else
                  @recording.formats.pluck(:url)
                end
-
+        if record_format == "video"
+           urls += "/video-0.m4v"
+        end
         render_data data: urls, status: :ok
       end
 

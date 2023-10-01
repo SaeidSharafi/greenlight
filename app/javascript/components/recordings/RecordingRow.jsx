@@ -51,7 +51,10 @@ export default function RecordingRow({
   const localizedTime = localizeDateTimeString(recording?.recorded_at, currentUser?.language);
   const formats = recording.formats.sort(
     (a, b) => (a.recording_type.toLowerCase() > b.recording_type.toLowerCase() ? 1 : -1),
-  );
+  ).map(format => ({
+    ...format,
+    recording_type_translation: t("recording."+format.recording_type.toLowerCase())
+  }));
 
   return (
     <tr
@@ -149,7 +152,7 @@ export default function RecordingRow({
             className={`btn-sm rounded-pill me-1 mt-1 border-0 btn-format-${format.recording_type.toLowerCase()}`}
             key={`${format.recording_type}-${format.url}`}
           >
-            {format.recording_type}
+            {format.recording_type_translation}
           </Button>
         ))}
       </td>

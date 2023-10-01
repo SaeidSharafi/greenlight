@@ -33,6 +33,7 @@ services:
       - ./lib/tasks/custom:/usr/src/app/lib/tasks/custom
       - ./config/initializers/locales.rb:/usr/src/app/config/initializers/locales.rb
       - ./app/models/user.rb:/usr/src/app/app/models/user.rb
+      - ./app/controllers/api/v1/recordings_controller.rb:/usr/src/app/app/controllers/api/v1/recordings_controller.rb
       - ./config/locales/fa.yml:/usr/src/app/config/locales/fa.yml
       - ./config/locales/fa_IR.yml:/usr/src/app/config/locales/fa_IR.yml
       - ./config/environments/production.rb:/usr/src/app/config/environments/production.rb
