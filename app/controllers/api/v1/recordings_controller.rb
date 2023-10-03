@@ -29,7 +29,7 @@ module Api
         ensure_authorized(%w[ManageRecordings SharedRoom PublicRecordings], record_id: params[:id])
       end
       before_action only: %i[index recordings_count] do
-        ensure_authorized('CreateRoom')
+        ensure_authorized(['CreateRoom','SharedList'])
       end
 
       # GET /api/v1/recordings.json

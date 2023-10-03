@@ -36,10 +36,10 @@ export default function useCreateSession() {
 
         if (redirect) {
           navigate(redirect);
-        } else if (response.permissions.CreateRoom === 'false') {
-          navigate('/home');
-        } else {
+        } else if (response.permissions.CreateRoom === 'true' || response.permissions.SharedList === 'true') {
           navigate('/rooms');
+        } else {
+          navigate('/home');
         }
       },
       onError: (err) => {

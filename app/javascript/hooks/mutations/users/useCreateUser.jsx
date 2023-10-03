@@ -40,10 +40,10 @@ export default function useCreateUser() {
           navigate(`/verify?id=${response.id}`);
         } else if (redirect) {
           navigate(redirect);
-        } else if (response.permissions.CreateRoom === 'false') {
-          navigate('/home');
-        } else {
+        } else if (response.permissions.CreateRoom === 'true' || response.permissions.SharedList === 'true') {
           navigate('/rooms');
+        } else {
+          navigate('/home');
         }
       },
       onError: (err) => {
