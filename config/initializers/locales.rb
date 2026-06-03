@@ -14,9 +14,10 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with Greenlight; if not, see <http://www.gnu.org/licenses/>.
 
+I18n.available_locales = [:fr, :de, :es, :en, :fa]
 # frozen_string_literal: true
 
 # Default language initialization.
 # The default language will be used to define the default language config for all users
 # that GL coudn't infer their preferred language from their browsers.
-I18n.default_locale = ENV.fetch('DEFAULT_LOCALE', 'en')
+I18n.default_locale = ENV.fetch('DEFAULT_LOCALE', 'fa')

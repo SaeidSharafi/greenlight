@@ -47,7 +47,7 @@ export default function SigninForm() {
 
   return (
     <Form methods={methods} onSubmit={handleSubmit}>
-      <FormControl field={fields.email} type="email" autoFocus />
+      <FormControl field={fields.email} type="text" autoFocus />
       <FormControl field={fields.password} type="password" />
       <Row>
         <Col>

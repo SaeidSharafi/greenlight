@@ -19,3 +19,11 @@
   font-family: 'Inter';
   src: url('Inter-Regular.ttf');
 }
+
+@font-face {
+  font-family: 'IRANSans';
+  src: url('IranSans/IRANSansWeb.eot') format('embedded-opentype'),
+  url('IranSans/IRANSansWeb.woff') format('woff'),
+  url('IranSans/IRANSansWeb.ttf') format('truetype'),
+  url('IranSans/IRANSansWeb.svg') format('svg');
+}

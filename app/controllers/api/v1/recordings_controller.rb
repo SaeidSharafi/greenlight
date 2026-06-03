@@ -32,6 +32,10 @@ module Api
         ensure_authorized(%w[ManageRecordings SharedRoom PublicRecordings], record_id: params[:id])
       end
 
+      before_action only: %i[index recordings_count] do
+        ensure_authorized(['CreateRoom','SharedList'])
+      end
+
       # GET /api/v1/recordings.json
       # Returns all of the current_user's recordings
       def index
@@ -114,6 +118,9 @@ module Api
                else
                  @recording.formats.pluck(:url)
                end
+        if record_format == "video"
+           urls += "/video-0.m4v"
+        end
 
         render_data data: urls, status: :ok
       end

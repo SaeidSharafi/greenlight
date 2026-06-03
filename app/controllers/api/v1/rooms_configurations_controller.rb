@@ -19,8 +19,8 @@
 module Api
   module V1
     class RoomsConfigurationsController < ApiController
-      before_action only: %i[index] do
-        ensure_authorized(%w[CreateRoom ManageSiteSettings ManageRoles ManageRooms], friendly_id: params[:friendly_id])
+      before_action only: %i[index show] do
+        ensure_authorized(%w[CreateRoom ManageSiteSettings ManageRoles ManageRooms SharedList], friendly_id: params[:friendly_id])
       end
       skip_before_action :ensure_authenticated, only: %i[show]
 

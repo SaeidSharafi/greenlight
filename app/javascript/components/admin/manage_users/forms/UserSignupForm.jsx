@@ -32,7 +32,7 @@ export default function UserSignupForm({ handleClose }) {
   return (
     <Form methods={methods} onSubmit={createUserAPI.mutate}>
       <FormControl field={fields.name} type="text" autoFocus />
-      <FormControl field={fields.email} type="email" />
+      <FormControl field={fields.email} type="text" />
       <FormControl field={fields.password} type="password" />
       <FormControl field={fields.password_confirmation} type="password" />
 

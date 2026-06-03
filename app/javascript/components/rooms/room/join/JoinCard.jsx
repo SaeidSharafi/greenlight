@@ -264,16 +264,6 @@ export default function JoinCard() {
                   autoFocus={currentUser?.signed_in}
                 />
               )}
-              {publicRoom?.data?.recording_consent === 'true' && (
-                <FormControlGeneric
-                  id={fields.recordingConsent.controlId}
-                  className="text-muted"
-                  field={fields.recordingConsent}
-                  label={fields.recordingConsent.label}
-                  control={RegularForm.Check}
-                  type="checkbox"
-                />
-              )}
 
               <Button
                 variant="brand"

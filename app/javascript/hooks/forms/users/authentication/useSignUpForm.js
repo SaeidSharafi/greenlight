@@ -26,20 +26,23 @@ export function useSignUpFormValidation() {
       .min(2, 'forms.validations.full_name.min')
       .max(255, 'forms.validations.full_name.max'),
 
-    email: yup.string().required('forms.validations.email.required').email('forms.validations.email.email')
+    email: yup.string().required('forms.validations.email.required')
+      .matches(
+        /[a-zA-Z0-9@.]+/,
+        'forms.validations.email.email'
+      )
       .min(6, 'forms.validations.email.min')
       .max(255, 'forms.validations.email.max'),
 
     password: yup.string().max(255, 'forms.validations.password.max')
       .matches(
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[`@%~!#£$\\^&*()\][+={}/|:;"'<>\-,.?_ ]).{8,}$/,
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/,
         'forms.validations.password.match',
       )
       .min(8, 'forms.validations.password.min')
       .test('oneLower', 'forms.validations.password.lower', (pwd) => pwd.match(/[a-z]/))
       .test('oneUpper', 'forms.validations.password.upper', (pwd) => pwd.match(/[A-Z]/))
-      .test('oneDigit', 'forms.validations.password.digit', (pwd) => pwd.match(/\d/))
-      .test('oneSymbol', 'forms.validations.password.symbol', (pwd) => pwd.match(/[`@%~!#£$\\^&*()\][+={}/|:;"'<>\-,.?_ ]/)),
+      .test('oneDigit', 'forms.validations.password.digit', (pwd) => pwd.match(/\d/)),
     password_confirmation: yup.string().required('forms.validations.password_confirmation.required')
       .oneOf([yup.ref('password')], 'forms.validations.password_confirmation.match'),
   })), []);

@@ -26,6 +26,7 @@ import {
 import { toast } from 'react-toastify';
 import { useAuth } from '../../contexts/auth/AuthProvider';
 import HomepageFeatureCard from './HomepageFeatureCard';
+import banner from '../../../assets/images/slides/home.png';
 import useRoomConfigValue from '../../hooks/queries/rooms/useRoomConfigValue';
 import useEnv from '../../hooks/queries/env/useEnv';
 
@@ -43,7 +44,7 @@ export default function HomePage() {
   useEffect(
     () => {
       // Todo: Use PermissionChecker.
-      if (!currentUser.stateChanging && currentUser.signed_in && currentUser.permissions.CreateRoom === 'true') {
+      if (!currentUser.stateChanging && currentUser.signed_in && (currentUser.permissions.CreateRoom === 'true' || currentUser.permissions.SharedList === 'true')) {
         navigate('/rooms');
       } else if (!currentUser.stateChanging && currentUser.signed_in && currentUser.permissions.CreateRoom === 'false') {
         navigate('/home');
@@ -105,56 +106,25 @@ export default function HomePage() {
 
   return (
     <>
-      <Row className="wide-white">
-        <Col lg={10}>
-          <div id="homepage-hero">
-            <h1 className="my-4"> {t('homepage.welcome_bbb')} </h1>
-            <p className="text-muted fs-5">
-              {t('homepage.bigbluebutton_description')}
-            </p>
-            <p className="text-muted fs-5">
-              {t('homepage.greenlight_description')}
-            </p>
-            <a href="https://bigbluebutton.org/" className="fs-5 text-link fw-bolder">
-              {t('homepage.learn_more')}
-              <ArrowRightIcon className="hi-s ms-2" />
-            </a>
+       <div class="wrapper">
+        <div class="background front-page">
+          <div class="slider">
+            <div id="1173fc94b2f5" class="carousel slides">
+              <ol class="carousel-indicators">
+                <li class="active" data-target="1173fc94b2f5" data-slide-to="0"></li>
+              </ol>
+              <div class="carousel-inner">
+                <div class="item active">
+                  <img src={banner}/>
+                  </div>
+                </div>
+              </div>
+
           </div>
-        </Col>
-      </Row>
-      <Row>
-        <h4 className="text-muted text-uppercase my-4 py-1">{t('homepage.explore_features')}</h4>
-        <Col className="mb-3">
-          <HomepageFeatureCard
-            title={t('homepage.meeting_title')}
-            description={t('homepage.meeting_description')}
-            icon={<ComputerDesktopIcon className="hi-s text-white" />}
-          />
-        </Col>
-        { (recordValue !== 'false') && (
-          <Col className="mb-3">
-            <HomepageFeatureCard
-              title={t('homepage.recording_title')}
-              description={t('homepage.recording_description')}
-              icon={<VideoCameraIcon className="hi-s text-white" />}
-            />
-          </Col>
-        )}
-        <Col className="mb-3">
-          <HomepageFeatureCard
-            title={t('homepage.settings_title')}
-            description={t('homepage.settings_description')}
-            icon={<Cog8ToothIcon className="hi-s text-white" />}
-          />
-        </Col>
-        <Col className="mb-3">
-          <HomepageFeatureCard
-            title={t('homepage.and_more_title')}
-            description={t('homepage.and_more_description')}
-            icon={<WrenchScrewdriverIcon className="hi-s text-white" />}
-          />
-        </Col>
-      </Row>
+        </div>
+
+
+      </div>
     </>
   );
 }

@@ -27,6 +27,8 @@
 @import 'admin_panel';
 @import 'pagination';
 @import 'fonts';
+@import 'rtl';
+
 
 html,
 body {
@@ -35,7 +37,7 @@ body {
 
 body {
   background: whitesmoke;
-  font-family: "Inter";
+  font-family: "IRANSans";
 }
 
 #navbar {

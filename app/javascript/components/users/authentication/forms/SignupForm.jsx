@@ -55,7 +55,7 @@ export default function SignupForm({ invitation }) {
   return (
     <Form methods={methods} onSubmit={handleSubmit}>
       <FormControl field={fields.name} type="text" autoFocus disabled={!!invitation?.name} />
-      <FormControl field={fields.email} type="email" disabled={!!invitation?.email} />
+      <FormControl field={fields.email} type="text" disabled={!!invitation?.email} />
       <FormControl field={fields.password} type="password" />
       <FormControl field={fields.password_confirmation} type="password" />
       <HCaptcha ref={captchaRef} />

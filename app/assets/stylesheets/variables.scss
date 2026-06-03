@@ -25,8 +25,8 @@ $muted: #6c757d;
 $black: #212529;
 
 $header-height: 70px;
-$footer-buffer-height: 15px;
-$footer-height: 57px;
+$footer-buffer-height: 0px;
+$footer-height: 0px;
 
 $table-hover-bg: #F8F8F8;
 
@@ -43,5 +43,5 @@ $input-max-width: 300px;
 
 :root {
   --toastify-color-error: #dc3545;
-  --toastify-font-family: "Inter";
+  --toastify-font-family: "IRANSans";
 }

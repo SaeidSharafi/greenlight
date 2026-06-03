@@ -99,7 +99,7 @@ export default function App() {
 
   return (
     <>
-      <Title lang={currentUser?.language} dir={i18next.dir(currentUser?.language)}>BigBlueButton</Title>
+      <Title lang={currentUser?.language} dir={i18next.dir(currentUser?.language)}>آسان</Title>
       { autoSignIn
         ? (
           <Container fluid className="d-flex vh-100 justify-content-center align-items-center">
@@ -123,7 +123,6 @@ export default function App() {
               newestOnTop
               autoClose={3000}
             />
-            <Footer />
           </>
         )}
     </>
