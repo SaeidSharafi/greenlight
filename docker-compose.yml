@@ -1,7 +1,8 @@
----
+version: '3'
+
 services:
   postgres:
-    image: postgres:14-alpine3.20
+    image: docker.jedu.ir/postgres:14-alpine3.20
     container_name: postgres
     restart: unless-stopped
     volumes:
@@ -11,24 +12,43 @@ services:
       - POSTGRES_PASSWORD=
 
   redis:
-    image: redis:6.2-alpine3.20
-    container_name: redis
+    image: docker.jedu.ir/redis:6.2-alpine3.20
+    container_name: redis_n
     restart: unless-stopped
     volumes:
       - ./data/redis/database_data:/data
 
   greenlight-v3:
     entrypoint: [bin/start]
-    image: bigbluebutton/greenlight:v3
+    image: docker.jedu.ir/bigbluebutton/greenlight:v3.8.2.3
     container_name: greenlight-v3
     restart: unless-stopped
     env_file: .env
     ports:
-      - 127.0.0.1:5050:3000
+      - 127.0.0.1:5051:3000
     logging:
       driver: ${LOGGING_DRIVER:-journald}
     volumes:
       - ./data/greenlight-v3/storage:/usr/src/app/storage
+      - ./log:/usr/src/app/log
+      - ./lib/tasks/custom:/usr/src/app/lib/tasks/custom
+      - ./lib/tasks/server_recordings_sync.rake:/usr/src/app/lib/tasks/server_recordings_sync.rake
+      - ./config/initializers/locales.rb:/usr/src/app/config/initializers/locales.rb
+      - ./app/models/user.rb:/usr/src/app/app/models/user.rb
+      - ./app/services/permissions_checker.rb:/usr/src/app/app/services/permissions_checker.rb
+      - ./app/controllers/api/v1/recordings_controller.rb:/usr/src/app/app/controllers/api/v1/recordings_controller.rb
+      - ./app/controllers/api/v1/rooms_controller.rb:/usr/src/app/app/controllers/api/v1/rooms_controller.rb
+      - ./app/controllers/api/v1/rooms_configurations_controller.rb:/usr/src/app/app/controllers/api/v1/rooms_configurations_controller.rb
+      - ./config/locales/fa.yml:/usr/src/app/config/locales/fa.yml
+      - ./config/locales/fa_IR.yml:/usr/src/app/config/locales/fa_IR.yml
+      - ./config/environments/production.rb:/usr/src/app/config/environments/production.rb
+      - ./app/assets/fonts:/usr/src/app/app/assets/fonts
+      - ./app/assets/images:/usr/src/app/app/assets/images
+      - ./app/assets/stylesheets:/usr/src/app/app/assets/stylesheets
+      - ./app/assets/locales/fa.json:/usr/src/app/app/assets/locales/fa.json
+      - ./app/javascript:/usr/src/app/app/javascript
+      - ./app/views/layouts/application.html.erb:/usr/src/app/app/views/layouts/application.html.erb
+      - ./public/favicon.ico:/usr/src/app/public/favicon.ico
     depends_on:
       - postgres
       - redis
