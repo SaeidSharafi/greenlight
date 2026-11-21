@@ -128,7 +128,7 @@ module Api
       private
 
       def recording_params
-        params.require(:recording).permit(:name)
+        params.expect(recording: [:name])
       end
 
       def find_recording
